@@ -1,9 +1,8 @@
-
-$bp-largest   : 75em;    
-$bp-large     : 68.75em;    
-$bp-medium    : 56.25em;   
-$bp-small     : 37.5em;     
-$bp-smallest  : 31.25em;  
+$bp-largest: 75em;
+$bp-large: 68.75em;
+$bp-medium: 56.25em;
+$bp-small: 37.5em;
+$bp-smallest: 31.25em;
 
 :root {
   --color-primary: #eb2f64;
@@ -25,8 +24,6 @@ $bp-smallest  : 31.25em;
   --line: 1px solid var(--color-grey-light-2);
 }
 
-
-
 * {
   margin: 0;
   padding: 0;
@@ -39,6 +36,10 @@ $bp-smallest  : 31.25em;
 }
 
 html {
+  @media only screen and (max-width: $bp-large) {
+    font-size: 50%;
+  }
+
   box-sizing: border-box;
   font-size: 62.5%;
 }
