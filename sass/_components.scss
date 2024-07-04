@@ -34,6 +34,12 @@
       background-color: var(--color-grey-light-3);
     }
 
+    &:focus ~ .search__suggestions {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     &::-webkit-input-placeholder {
       font-size: 100;
       color: var(--color-grey-light-4);
@@ -62,6 +68,36 @@
     width: 2rem;
     fill: var(--color-grey-dark-3);
   }
+  &__suggestions {
+    transition: all 0.3s;
+    display: block;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    left: 1/2;
+    width: 30%;
+    top: 22%;
+    box-shadow: var(--shadow-light);
+    background-color: white;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    z-index: 10;
+    max-height: 15rem;
+    overflow-y: auto;
+    visibility: hidden;
+    transform: translateY(-1rem);
+    opacity: 0;
+    &__item {
+      padding: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
 }
 
 .user-nav {
@@ -86,15 +122,25 @@
 
   &__icon-box {
     position: relative;
+
+    &:hover {
+      .user-nav__icon,
+      .user-nav__notification {
+        transform: translateY(-5px);
+        scale: 1.1;
+      }
+    }
   }
 
   &__icon {
+    transition: all 0.2s;
     height: 2.25rem;
     width: 2.25rem;
     fill: var(--color-grey-dark-2);
   }
 
   &__notification {
+    transition: all 0.2s;
     font-size: 0.8rem;
     height: 1.75rem;
     width: 1.75rem;
@@ -114,6 +160,51 @@
     height: 3.75rem;
     border-radius: 50%;
     margin-right: 1rem;
+  }
+
+  &__user:hover > &__user-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__user-menu {
+    @media only screen and (max-width: $bp-small) {
+      right: 0;
+      font-size: 1.4rem;
+    }
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+    flex-direction: column;
+    position: absolute;
+    width: 12rem;
+    margin-top: 15rem;
+    right: 10%;
+    background-color: white;
+    box-shadow: var(--shadow-dark);
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+
+    z-index: 1;
+    &__item {
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--color-grey-light-2);
+      }
+      &::before {
+        content: "";
+        display: inline-block;
+        height: 1rem;
+        width: 1rem;
+        margin-right: 0.7rem;
+
+        background-color: var(--color-primary);
+        mask-image: url(../img/chevron-thin-right.svg);
+        mask-size: cover;
+        background-image: none;
+      }
+    }
   }
 }
 
@@ -216,10 +307,21 @@
 
 .gallery {
   display: flex;
-
+  &__item {
+    overflow: hidden;
+    display: block;
+  }
   &__photo {
     width: 100%;
+    overflow: hidden;
     display: block;
+    transition: all 0.3s;
+    filter: brightness(50%);
+    transform: scale(1.1);
+    &:hover {
+      filter: brightness(100%);
+      transform: scale(1.4);
+    }
   }
 }
 
