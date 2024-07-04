@@ -1,3 +1,10 @@
+
+$bp-largest   : 75em;    
+$bp-large     : 68.75em;    
+$bp-medium    : 56.25em;   
+$bp-small     : 37.5em;     
+$bp-smallest  : 31.25em;  
+
 :root {
   --color-primary: #eb2f64;
   --color-primary-light: #ff3366;
@@ -17,6 +24,8 @@
 
   --line: 1px solid var(--color-grey-light-2);
 }
+
+
 
 * {
   margin: 0;
